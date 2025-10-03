@@ -47,7 +47,6 @@ export class Category extends LitElement {
       margin-bottom: 0.5rem;  /* mb-2 */
       padding: 0.75rem;       /* p-3 */
       border-radius: 0.375rem; /* rounded */
-      background-color: #ffffff; /* Tailwind default white */
     }
 
     h3 {

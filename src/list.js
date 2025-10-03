@@ -35,8 +35,7 @@ export class List extends LitElement {
     .wish-list {
       margin-bottom: 2rem; /* mb-8 */
       padding: 1rem;       /* p-4 */
-      border-radius: 0.375rem; /* rounded */
-      background-color: #ffffff;
+      border-radius: 0.25rem; /* rounded */
     }
 
     h2 {

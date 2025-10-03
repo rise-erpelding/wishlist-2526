@@ -33,7 +33,6 @@ export class ClaimItemForm extends LitElement {
     .button {
       border-radius: 0.5rem;
       padding: 0.5rem;
-      font-size: 0.875rem;
     }
     .button-claim {
       background: #2563eb;
@@ -43,6 +42,29 @@ export class ClaimItemForm extends LitElement {
     .button-no-email {
       border: 1px solid black;
       background: transparent;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.25rem; /* mb-1 */
+    }
+    .subtext {
+      color: #404040; /* text-neutral-700 */
+      margin-bottom: 1rem; /* mb-4 */
+      margin-top: 0.25rem; /* mt-1 */
+    }
+
+    @media screen and (min-width: 768px) {
+      .claim-item-form {
+        padding-top: 0; /* md:pt-0 */
+        padding-left: 1.5rem; /* md:pl-6 */
+        margin-top: 0; /* md:mt-0 */
+        margin-left: 1rem; /* md:ml-4 */
+        border-left: 1px solid #a3a3a3; /* md:border-l */
+        border-top: none; /* md:border-t-0 */
+      }
+      .button {
+        font-size: 0.875rem; /* md:text-sm */
+      }
     }
   `;
 
@@ -81,7 +103,7 @@ export class ClaimItemForm extends LitElement {
             .value=${this.emailAddress}
             @input=${this.handleInputChange}
           />
-          <p>Only visible to list owner</p>
+          <p class="subtext">Only visible to list owner</p>
           <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
             <button
               class="button button-no-email"

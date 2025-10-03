@@ -24,7 +24,6 @@ export class ClaimItem extends LitElement {
     .button {
       border-radius: 0.5rem;
       padding: 0.5rem;
-      font-size: 0.875rem;
     }
     .button-claim {
       background: #2563eb;
@@ -46,6 +45,9 @@ export class ClaimItem extends LitElement {
     .justify-end {
       justify-content: flex-end;
     }
+    .claim-prompt {
+      display: none; /* Hidden on mobile */
+    }
     .claimed-text {
       font-size: 1.25rem;
       font-weight: bold;
@@ -54,6 +56,15 @@ export class ClaimItem extends LitElement {
     .subtext {
       color: #404040;
       margin-bottom: 0.5rem;
+    }
+
+    @media screen and (min-width: 768px) {
+      .button {
+        font-size: 0.875rem; /* md:text-sm */
+      }
+      .claim-prompt {
+        display: block; /* Show on desktop */
+      }
     }
   `;
 
@@ -98,7 +109,7 @@ export class ClaimItem extends LitElement {
       ${!this.showForm && !this.showClaimed
         ? html`
             <div class="flex justify-between justify-end">
-              <h5>Planning to buy this? Claim it!</h5>
+              <h5 class="claim-prompt">Planning to buy this? Claim it!</h5>
               <button class="button button-claim" @click=${this.handleClaim}>
                 Claim
               </button>

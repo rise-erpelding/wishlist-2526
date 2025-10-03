@@ -27,7 +27,7 @@ export class Item extends LitElement {
         background: white;     /* bg-white */
         box-shadow: 0 1px 3px rgba(0,0,0,0.1),
                     0 1px 2px rgba(0,0,0,0.06); /* shadow */
-        max-width: 64rem;      /* max-w-4xl */
+        max-width: 56rem;      /* max-w-4xl */
       }
 
       .item-title-section {
@@ -51,6 +51,7 @@ export class Item extends LitElement {
       }
 
       h4 {
+        margin: 0;
         font-weight: 600;   /* font-semibold */
         margin-bottom: 0.25rem; /* mb-1 */
         font-size: 1.5rem;  /* text-2xl */
@@ -68,6 +69,11 @@ export class Item extends LitElement {
       p.line-through {
         color: #737373; /* neutral-500 */
         text-decoration: line-through;
+      }
+
+      a {
+        text-decoration: underline;
+        text-decoration-color: #737373; /* decoration-neutral-500 */
       }
 
       @media screen and (min-width: 768px) {
