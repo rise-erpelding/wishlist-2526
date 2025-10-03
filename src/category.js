@@ -1,0 +1,98 @@
+import { LitElement, html, css } from 'lit';
+import './item.js';
+import './icons/chevron-down.js';
+import './icons/chevron-up.js';
+
+export class Category extends LitElement {
+  static properties = {
+    currentWishList: { type: Object },
+    currentCategory: { type: Object },
+    items: { type: Array },
+    isShowingCategory: { type: Boolean, state: true }
+  };
+
+  constructor() {
+    super();
+    this.currentWishList = null;
+    this.currentCategory = null;
+    this.items = [];
+    this.isShowingCategory = true; // default open
+  }
+
+  toggleShowCategory() {
+    this.isShowingCategory = !this.isShowingCategory;
+  }
+
+  get sortedCategoryItems() {
+    if (!this.currentCategory || !this.currentWishList || !this.items) return [];
+
+    const currentWishListId = this.currentWishList.sys?.id;
+    const currentCategoryId = this.currentCategory.sys?.id;
+
+    const categoryItems = this.items.filter(item =>
+      item.fields.category?.some(category => category.sys.id === currentCategoryId) &&
+      item.fields.wishList.some(wishList => wishList.sys.id === currentWishListId) &&
+      !item.fields.isStale
+    );
+
+    return categoryItems.sort((a, b) => {
+      if (a.fields.isClaimed && !b.fields.isClaimed) return 1;
+      if (!a.fields.isClaimed && b.fields.isClaimed) return -1;
+      return a.fields.title?.toLowerCase().localeCompare(b.fields.title?.toLowerCase());
+    });
+  }
+
+  static styles = css`
+    .category {
+      margin-bottom: 0.5rem;  /* mb-2 */
+      padding: 0.75rem;       /* p-3 */
+      border-radius: 0.375rem; /* rounded */
+      background-color: #ffffff; /* Tailwind default white */
+    }
+
+    h3 {
+      font-size: 1.125rem; /* text-lg */
+      font-weight: 800;    /* font-extrabold */
+      text-transform: uppercase;
+      margin-bottom: 0.5rem; /* mb-2 */
+    }
+
+    button {
+      all: unset;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem; /* space between text and chevron */
+    }
+
+    ul.is-open {
+      display: block;
+    }
+
+    ul.is-closed {
+      display: none;
+    }
+  `;
+
+  render() {
+    return html`
+      <section class="category">
+        <h3>
+          <button @click=${this.toggleShowCategory}>
+            ${this.currentCategory?.fields?.title}
+            ${this.isShowingCategory
+              ? html`<chevron-up size="12"></chevron-up>`
+              : html`<chevron-down size="12"></chevron-down>`}
+          </button>
+        </h3>
+        <ul class=${this.isShowingCategory ? 'is-open' : 'is-closed'}>
+          ${this.sortedCategoryItems.map(categoryItem => html`
+            <wish-item .currentItem=${categoryItem}></wish-item>
+          `)}
+        </ul>
+      </section>
+    `;
+  }
+}
+
+customElements.define('wish-category', Category);
