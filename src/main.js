@@ -1,6 +1,3 @@
-import './index.css';
-
-import './my-element.js';
 import './category.js';
 import './claim-item-form.js';
 import './claim-item.js';
