@@ -1,7 +1,8 @@
-import { LitElement, html, css } from 'lit';
-import './item.js';
-import './icons/chevron-down.js';
-import './icons/chevron-up.js';
+import { LitElement, html } from 'lit';
+import '../item/item.js';
+import '../../icons/chevron-down.js';
+import '../../icons/chevron-up.js';
+import styles from './category.css?inline';
 
 export class Category extends LitElement {
   static properties = {
@@ -17,6 +18,16 @@ export class Category extends LitElement {
     this.currentCategory = null;
     this.items = [];
     this.isShowingCategory = true; // default open
+  }
+
+  static styles = new CSSStyleSheet();
+
+  connectedCallback() {
+    super.connectedCallback();
+    if (!Category.styles.cssRules.length) {
+      Category.styles.replaceSync(styles);
+    }
+    this.shadowRoot.adoptedStyleSheets = [Category.styles];
   }
 
   toggleShowCategory() {
@@ -42,54 +53,21 @@ export class Category extends LitElement {
     });
   }
 
-  static styles = css`
-    .category {
-      margin-bottom: 0.5rem;  /* mb-2 */
-      padding: 0.75rem;       /* p-3 */
-      border-radius: 0.375rem; /* rounded */
-    }
-
-    h3 {
-      font-size: 1.125rem; /* text-lg */
-      font-weight: 800;    /* font-extrabold */
-      text-transform: uppercase;
-      margin-bottom: 0.5rem; /* mb-2 */
-    }
-
-    button {
-      all: unset;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem; /* space between text and chevron */
-    }
-
-    ul.is-open {
-      display: block;
-    }
-
-    ul.is-closed {
-      display: none;
-    }
-  `;
-
   render() {
     return html`
-      <section class="category">
-        <h3>
-          <button @click=${this.toggleShowCategory}>
-            ${this.currentCategory?.fields?.title}
-            ${this.isShowingCategory
-              ? html`<chevron-up size="12"></chevron-up>`
-              : html`<chevron-down size="12"></chevron-down>`}
-          </button>
-        </h3>
-        <ul class=${this.isShowingCategory ? 'is-open' : 'is-closed'}>
-          ${this.sortedCategoryItems.map(categoryItem => html`
-            <wish-item .currentItem=${categoryItem}></wish-item>
-          `)}
-        </ul>
-      </section>
+      <h3>
+        <button @click=${this.toggleShowCategory}>
+          ${this.currentCategory?.fields?.title}
+          ${this.isShowingCategory
+            ? html`<chevron-up size="12"></chevron-up>`
+            : html`<chevron-down size="12"></chevron-down>`}
+        </button>
+      </h3>
+      <ul class=${this.isShowingCategory ? 'is-open' : 'is-closed'}>
+        ${this.sortedCategoryItems.map(categoryItem => html`
+          <wish-item .currentItem=${categoryItem}></wish-item>
+        `)}
+      </ul>
     `;
   }
 }

@@ -1,10 +1,11 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html } from 'lit';
 // import { patchEntry } from '../lib/contentful.js';
+import styles from './claim-item-form.css?inline';
 
 export class ClaimItemForm extends LitElement {
   static properties = {
     itemId: { type: String },          // maps `itemId` attribute
-    handleShowClaimed: { type: Function }, 
+    handleShowClaimed: { type: Function },
     handleCloseForm: { type: Function }
   };
 
@@ -15,58 +16,15 @@ export class ClaimItemForm extends LitElement {
     this.handleCloseForm = () => {};
   }
 
-  static styles = css`
-    .claim-item-form {
-      background: white;
-      padding-top: 1.5rem;
-      margin-top: 1.5rem;
-      border-top: 1px solid #a3a3a3;
-    }
-    .email-input {
-      display: block;
-      border: 1px solid #737373;
-      width: 100%;
-      height: 2.5rem;
-      border-radius: 0.5rem;
-      padding: 0 0.5rem;
-    }
-    .button {
-      border-radius: 0.5rem;
-      padding: 0.5rem;
-    }
-    .button-claim {
-      background: #2563eb;
-      color: white;
-      border: none;
-    }
-    .button-no-email {
-      border: 1px solid black;
-      background: transparent;
-    }
-    label {
-      display: block;
-      margin-bottom: 0.25rem; /* mb-1 */
-    }
-    .subtext {
-      color: #404040; /* text-neutral-700 */
-      margin-bottom: 1rem; /* mb-4 */
-      margin-top: 0.25rem; /* mt-1 */
-    }
+  static styles = new CSSStyleSheet();
 
-    @media screen and (min-width: 768px) {
-      .claim-item-form {
-        padding-top: 0; /* md:pt-0 */
-        padding-left: 1.5rem; /* md:pl-6 */
-        margin-top: 0; /* md:mt-0 */
-        margin-left: 1rem; /* md:ml-4 */
-        border-left: 1px solid #a3a3a3; /* md:border-l */
-        border-top: none; /* md:border-t-0 */
-      }
-      .button {
-        font-size: 0.875rem; /* md:text-sm */
-      }
+  connectedCallback() {
+    super.connectedCallback();
+    if (!ClaimItemForm.styles.cssRules.length) {
+      ClaimItemForm.styles.replaceSync(styles);
     }
-  `;
+    this.shadowRoot.adoptedStyleSheets = [ClaimItemForm.styles];
+  }
 
   handleInputChange(e) {
     this.emailAddress = e.target.value;
@@ -106,13 +64,13 @@ export class ClaimItemForm extends LitElement {
           <p class="subtext">Only visible to list owner</p>
           <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
             <button
-              class="button button-no-email"
+              class="button button-secondary"
               @click=${this.handleClaimWithoutEmail}
             >
               Claim without email
             </button>
             <button
-              class="button button-claim"
+              class="button button-primary"
               @click=${this.handleClaimWithEmail}
             >
               Claim item

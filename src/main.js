@@ -1,9 +1,9 @@
-import './category.js';
-import './claim-item-form.js';
-import './claim-item.js';
-import './item.js';
+import './components/category/category.js';
+import './components/claim-item-form/claim-item-form.js';
+import './components/claim-item/claim-item.js';
+import './components/item/item.js';
 import './icons/index.js';
-import './list.js';
+import './components/list/list.js';
 import { mockWishLists, mockCategories, mockItems } from './mock-data.js';
 
 window.addEventListener('DOMContentLoaded', () => {
