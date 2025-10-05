@@ -76,7 +76,7 @@ a {
       "image  claim       claim";
   }
 
-  :host(:has(.claim-item-form)) {
+  :host(.has-form) {
     grid-template-areas:
       "title title       claim claim"
       "image description claim claim"

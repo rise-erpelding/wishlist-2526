@@ -20,6 +20,11 @@ export class Item extends LitElement {
       Item.styles.replaceSync(styles);
     }
     this.shadowRoot.adoptedStyleSheets = [Item.styles];
+
+    // Listen for form state changes from claim-item component
+    this.addEventListener('form-state-change', (e) => {
+      this.classList.toggle('has-form', e.detail.hasForm);
+    });
   }
 
   render() {

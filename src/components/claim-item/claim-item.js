@@ -41,15 +41,30 @@ export class ClaimItem extends LitElement {
 
   handleClaim() {
     this.showForm = true;
+    this.dispatchEvent(new CustomEvent('form-state-change', {
+      detail: { hasForm: true },
+      bubbles: true,
+      composed: true
+    }));
   }
 
   handleCloseForm = () => {
     this.showForm = false;
+    this.dispatchEvent(new CustomEvent('form-state-change', {
+      detail: { hasForm: false },
+      bubbles: true,
+      composed: true
+    }));
   };
 
   handleShowClaimed = () => {
     this.showClaimed = true;
     this.showForm = false;
+    this.dispatchEvent(new CustomEvent('form-state-change', {
+      detail: { hasForm: false },
+      bubbles: true,
+      composed: true
+    }));
   };
 
   async handleUnclaim(e) {
