@@ -4,17 +4,20 @@ import './components/claim-item/claim-item.js';
 import './components/item/item.js';
 import './icons/index.js';
 import './components/list/list.js';
-import { mockWishLists, mockCategories, mockItems } from './mock-data.js';
+import { fetchWishlistData } from './data/data-service.js';
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
   const app = document.getElementById('app');
 
-  // Add both wishlists to the page
-  mockWishLists.forEach(wishList => {
+  // Fetch wishlist data from all sources
+  const { wishlists, categories, items } = await fetchWishlistData();
+
+  // Add wishlists to the page
+  wishlists.forEach(wishList => {
     const el = document.createElement('wish-list');
     el.currentWishList = wishList;
-    el.categories = mockCategories;
-    el.items = mockItems;
+    el.categories = categories;
+    el.items = items;
     app.appendChild(el);
   });
 });

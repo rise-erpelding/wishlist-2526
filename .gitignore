@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# External data import files (working files, not committed)
+scripts/external-source.html
+scripts/import-output.json
+
+# Note: src/data/external-items.json IS committed (snapshot of imported data)

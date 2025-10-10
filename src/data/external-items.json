@@ -1,0 +1,152 @@
+[
+  {
+    "sys": {
+      "id": "external-1761211552"
+    },
+    "fields": {
+      "title": "Real Pigeons Power Up",
+      "description": "by Andrew McDonald, Ben Wood (Paperback)",
+      "url": "https://www.amazon.com/dp/1761211552",
+      "imageUrl": "https://m.media-amazon.com/images/I/61D2A67IqtL._SS135_.jpg",
+      "price": "$17.56",
+      "isClaimed": false,
+      "externalId": "1761211552",
+      "source": "external"
+    }
+  },
+  {
+    "sys": {
+      "id": "external-B09DDHX5M9"
+    },
+    "fields": {
+      "title": "Marvel Nerf Power Moves Black Panther Power Slash Claw, Dart-Launching Toy for Kids Roleplay, 5+ (Amazon Exclusive)",
+      "description": "by Marvel (Toy)",
+      "url": "https://www.amazon.com/dp/B09DDHX5M9",
+      "imageUrl": "https://m.media-amazon.com/images/I/41iSnsCvIFL._SS135_.jpg",
+      "price": "$22.99",
+      "isClaimed": false,
+      "externalId": "B09DDHX5M9",
+      "source": "external"
+    }
+  },
+  {
+    "sys": {
+      "id": "external-0316174483"
+    },
+    "fields": {
+      "title": "Ed Emberley's Complete Funprint Drawing Book",
+      "description": "by Ed Emberley (Paperback)",
+      "url": "https://www.amazon.com/dp/0316174483",
+      "imageUrl": "https://m.media-amazon.com/images/I/517TF4R6U2L._SS135_.jpg",
+      "price": "$12.08",
+      "isClaimed": false,
+      "externalId": "0316174483",
+      "source": "external"
+    }
+  },
+  {
+    "sys": {
+      "id": "external-B00KGRRA1E"
+    },
+    "fields": {
+      "title": "YAMAHA metronome ivory MP-90 IV",
+      "description": "by Yamaha (Electronics)",
+      "url": "https://www.amazon.com/dp/B00KGRRA1E",
+      "imageUrl": "https://m.media-amazon.com/images/I/31Salm4xg2L._SS135_.jpg",
+      "price": null,
+      "isClaimed": false,
+      "externalId": "B00KGRRA1E",
+      "source": "external"
+    }
+  },
+  {
+    "sys": {
+      "id": "external-1338896393"
+    },
+    "fields": {
+      "title": "Cat Kid Comic Club: Influencers: A Graphic Novel (Cat Kid Comic Club #5): From the Creator of Dog Man",
+      "description": "by Dav Pilkey (Hardcover)",
+      "url": "https://www.amazon.com/dp/1338896393",
+      "imageUrl": "https://m.media-amazon.com/images/I/41vhKj5p1KL._SS135_.jpg",
+      "price": "$7.41",
+      "isClaimed": false,
+      "externalId": "1338896393",
+      "source": "external"
+    }
+  },
+  {
+    "sys": {
+      "id": "external-0525428879"
+    },
+    "fields": {
+      "title": "Robo-Sauce",
+      "description": "by Adam Rubin, Daniel Salmieri (Hardcover)",
+      "url": "https://www.amazon.com/dp/0525428879",
+      "imageUrl": "https://m.media-amazon.com/images/I/41ZPcbS8PHL._SS135_.jpg",
+      "price": "$10.74",
+      "isClaimed": false,
+      "externalId": "0525428879",
+      "source": "external"
+    }
+  },
+  {
+    "sys": {
+      "id": "external-0062981226"
+    },
+    "fields": {
+      "title": "Pea, Bee, & Jay #3: Lift Off: A Graphic Novel",
+      "description": "by Brian \"Smitty\" Smith (Paperback)",
+      "url": "https://www.amazon.com/dp/0062981226",
+      "imageUrl": "https://m.media-amazon.com/images/I/51CArULn2HL._SS135_.jpg",
+      "price": "$5.90",
+      "isClaimed": false,
+      "externalId": "0062981226",
+      "source": "external"
+    }
+  },
+  {
+    "sys": {
+      "id": "external-0062981196"
+    },
+    "fields": {
+      "title": "Pea, Bee, & Jay #2: Wannabees: A Graphic Novel",
+      "description": "by Brian \"Smitty\" Smith (Paperback)",
+      "url": "https://www.amazon.com/dp/0062981196",
+      "imageUrl": "https://m.media-amazon.com/images/I/51uAfapKnIL._SS135_.jpg",
+      "price": "$7.19",
+      "isClaimed": false,
+      "externalId": "0062981196",
+      "source": "external"
+    }
+  },
+  {
+    "sys": {
+      "id": "external-B0BF3XHQYX"
+    },
+    "fields": {
+      "title": "Bird & Squirrel Series 6 Books Set (#1 - #6)",
+      "description": "by James Burks (Paperback)",
+      "url": "https://www.amazon.com/dp/B0BF3XHQYX",
+      "imageUrl": "https://m.media-amazon.com/images/I/61avtkEiQVL._SS135_.jpg",
+      "price": "$57.97",
+      "isClaimed": false,
+      "externalId": "B0BF3XHQYX",
+      "source": "external"
+    }
+  },
+  {
+    "sys": {
+      "id": "external-B08TQZ1FRM"
+    },
+    "fields": {
+      "title": "Exploding Kittens Tacocat Spelled Backwards 2 Players - Ages 7+ - 15 Minutes to Play - Clever Family Board Game - Couples Game, Family Game Night, Kid and Adult Board Game",
+      "description": "by Exploding Kittens (Toy)",
+      "url": "https://www.amazon.com/dp/B08TQZ1FRM",
+      "imageUrl": "https://m.media-amazon.com/images/I/413lFwEkb0L._SS135_.jpg",
+      "price": "$8.89",
+      "isClaimed": false,
+      "externalId": "B08TQZ1FRM",
+      "source": "external"
+    }
+  }
+]
