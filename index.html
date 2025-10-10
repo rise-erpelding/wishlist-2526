@@ -2,15 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/src/styles/index.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Lit</title>
-    <link rel="stylesheet" href="./src/index.css" />
-    <script type="module" src="/src/my-element.js"></script>
+    <title>Erp wish lists 2025-26</title>
+    <script type="module" src="/src/main.js"></script>
   </head>
   <body>
-    <my-element>
-      <h1>Vite + Lit</h1>
-    </my-element>
+    <main>
+      <details>
+        <summary>Filter</summary>
+        <label>
+          <input type="checkbox" id="hide-claimed" />
+          Hide claimed items
+        </label>
+      </details>
+      <h1 style="font-weight:900; font-size: 2.25rem; line-height: 2.5rem; padding: 1rem; margin: 0;">Wish Lists 2025</h1>
+      <div id="app"></div>
+    </main>
+    <footer style="text-align: center;">
+      <a style="display: inline-block;" href="https://github.com/rise-erpelding/wishlist-2526">
+        <img
+          src="/octocat.svg"
+          alt="GitHub logo"
+          width="30"
+          height="30"
+        />
+      </a>
+    </footer>
   </body>
 </html>

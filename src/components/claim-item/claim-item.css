@@ -1,0 +1,41 @@
+@import url('../../styles/buttons.css');
+
+:host {
+  display: block;
+}
+
+.dialog {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.claim-dialog {
+  justify-content: flex-end;
+}
+
+.undo-wrapper {
+  text-align: right;
+}
+
+.claim-prompt {
+  display: none; /* Hidden on mobile */
+}
+
+.claimed-text {
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding-top: 1.5rem;
+}
+
+.subtext {
+  color: #404040;
+  margin-bottom: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .claim-prompt {
+    display: block; /* Show on desktop */
+  }
+}
