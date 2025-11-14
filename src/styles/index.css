@@ -7,11 +7,6 @@ body {
   background: #f5f5f5;
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   margin: 1rem;
-}
-
-main {
-  @media screen and (min-width: 768px) {
-    /* TODO: deal with this */
-    width: 48rem;
-  }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

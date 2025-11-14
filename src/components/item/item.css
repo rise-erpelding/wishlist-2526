@@ -65,6 +65,11 @@ p.line-through {
 a {
   text-decoration: underline;
   text-decoration-color: #737373; /* decoration-neutral-500 */
+  color: inherit; /* Inherit text color instead of default blue */
+}
+
+a h4 {
+  color: #000; /* Black text for non-claimed items */
 }
 
 @media screen and (min-width: 768px) {
