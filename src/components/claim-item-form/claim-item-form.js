@@ -12,6 +12,7 @@ export class ClaimItemForm extends LitElement {
   constructor() {
     super();
     this.itemId = '';
+    this.emailAddress = '';
     this.handleShowClaimed = () => {};
     this.handleCloseForm = () => {};
   }
