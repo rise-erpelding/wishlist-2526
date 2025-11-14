@@ -56,7 +56,7 @@ export class ClaimItemForm extends LitElement {
     return html`
       <div class="claim-item-form">
         <div style="display: flex; flex-direction: row-reverse;">
-          <button @click=${this.handleCloseForm}>
+          <button class="close-button" @click=${this.handleCloseForm}>
             <close-button size="16"></close-button>
           </button>
         </div>
