@@ -11,6 +11,11 @@
   border-top: 1px solid #a3a3a3;
 }
 
+.claim-item-form input,
+.claim-item-form button {
+  box-sizing: border-box;
+}
+
 .email-input {
   display: block;
   border: 1px solid #737373;
@@ -48,7 +53,7 @@ label {
 @media screen and (min-width: 768px) {
   .claim-item-form {
     padding-top: 0; /* md:pt-0 */
-    padding-left: 1.5rem; /* md:pl-6 */
+    padding-left: 1.5rem;
     margin-top: 0; /* md:mt-0 */
     margin-left: 1rem; /* md:ml-4 */
     border-left: 1px solid #a3a3a3; /* md:border-l */
