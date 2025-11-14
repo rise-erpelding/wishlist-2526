@@ -36,8 +36,6 @@ export class ClaimItemForm extends LitElement {
     try {
       await patchEntry(this.itemId, { isClaimed: true, claimedBy: '' });
       if (this.handleShowClaimed) this.handleShowClaimed();
-      // Trigger a page reload to show updated data
-      setTimeout(() => window.location.reload(), 1000);
     } catch (error) {
       console.error('Failed to claim item:', error);
     }
@@ -49,8 +47,6 @@ export class ClaimItemForm extends LitElement {
     try {
       await patchEntry(this.itemId, { isClaimed: true, claimedBy: this.emailAddress || '' });
       if (this.handleShowClaimed) this.handleShowClaimed();
-      // Trigger a page reload to show updated data
-      setTimeout(() => window.location.reload(), 1000);
     } catch (error) {
       console.error('Failed to claim item:', error);
     }
