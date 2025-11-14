@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-// import { patchEntry } from '../lib/contentful.js';
+import { patchEntry } from '../../lib/contentful.js';
 import styles from './claim-item-form.css?inline';
 
 export class ClaimItemForm extends LitElement {
@@ -30,18 +30,30 @@ export class ClaimItemForm extends LitElement {
     this.emailAddress = e.target.value;
   }
 
-  handleClaimWithoutEmail(e) {
+  async handleClaimWithoutEmail(e) {
     e.preventDefault();
     console.log("handling claim without email");
-    if (this.handleShowClaimed) this.handleShowClaimed();
-    // patchEntry(this.itemId, { isClaimed: true });
+    try {
+      await patchEntry(this.itemId, { isClaimed: true, claimedBy: '' });
+      if (this.handleShowClaimed) this.handleShowClaimed();
+      // Trigger a page reload to show updated data
+      setTimeout(() => window.location.reload(), 1000);
+    } catch (error) {
+      console.error('Failed to claim item:', error);
+    }
   }
 
-  handleClaimWithEmail(e) {
+  async handleClaimWithEmail(e) {
     e.preventDefault();
     console.log("handling claim with email:", this.emailAddress);
-    // patchEntry(this.itemId, { isClaimed: true, claimedBy: this.emailAddress });
-    if (this.handleShowClaimed) this.handleShowClaimed();
+    try {
+      await patchEntry(this.itemId, { isClaimed: true, claimedBy: this.emailAddress || '' });
+      if (this.handleShowClaimed) this.handleShowClaimed();
+      // Trigger a page reload to show updated data
+      setTimeout(() => window.location.reload(), 1000);
+    } catch (error) {
+      console.error('Failed to claim item:', error);
+    }
   }
 
   render() {
