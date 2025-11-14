@@ -6,7 +6,10 @@ import './icons/index.js';
 import './components/list/list.js';
 import { fetchAllWishListData } from './lib/wishlist-service.js';
 
-window.addEventListener('DOMContentLoaded', async () => {
+/**
+ * Fetches data from Contentful and renders wishlists
+ */
+async function loadAndRenderWishLists() {
   const app = document.getElementById('app');
 
   // Show loading state
@@ -36,7 +39,10 @@ window.addEventListener('DOMContentLoaded', async () => {
     console.error('Error loading wish lists:', error);
     app.innerHTML = '<p>Error loading wish lists. Please check the console for details.</p>';
   }
-});
+}
+
+// Initial load
+window.addEventListener('DOMContentLoaded', loadAndRenderWishLists);
 
 console.log("components registered");
 

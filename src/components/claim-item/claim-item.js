@@ -74,8 +74,6 @@ export class ClaimItem extends LitElement {
       console.log("handling unclaim for item:", this.itemId);
       this.showClaimed = false;
       this.existingClaimedStatus = false;
-      // Trigger a page reload to show updated data
-      window.location.reload();
     } catch (error) {
       console.error('Failed to unclaim the item:', error);
     }
