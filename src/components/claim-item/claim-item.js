@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-// import { patchEntry } from '../../lib/contentful.js';
+import { patchEntry } from '../../lib/contentful.js';
 import '../claim-item-form/claim-item-form.js';
 import styles from './claim-item.css?inline';
 
@@ -70,9 +70,12 @@ export class ClaimItem extends LitElement {
   async handleUnclaim(e) {
     e.preventDefault();
     try {
-      // await patchEntry(this.itemId, { isClaimed: false, claimedBy: '' });
+      await patchEntry(this.itemId, { isClaimed: false, claimedBy: '' });
       console.log("handling unclaim for item:", this.itemId);
       this.showClaimed = false;
+      this.existingClaimedStatus = false;
+      // Trigger a page reload to show updated data
+      window.location.reload();
     } catch (error) {
       console.error('Failed to unclaim the item:', error);
     }
