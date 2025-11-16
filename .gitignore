@@ -16,6 +16,9 @@ dist-ssr
 .env
 .env.local
 
+# Import scripts (local only)
+scripts/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
