@@ -43,17 +43,3 @@ async function loadAndRenderWishLists() {
 
 // Initial load
 window.addEventListener('DOMContentLoaded', loadAndRenderWishLists);
-
-console.log("components registered");
-
-// const wishItemEl = document.createElement('wish-item');
-// wishItemEl.currentItem = {
-//   fields: {
-//     title: 'New Guitar',
-//     description: 'Electric guitar',
-//     imageUrl: '/guitar.jpg',
-//     url: 'https://example.com/guitar'
-//   }
-// };
-// document.body.appendChild(wishItemEl);
-
