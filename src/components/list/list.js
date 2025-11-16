@@ -37,9 +37,25 @@ export class List extends LitElement {
   get wishListCategories() {
     if (!this.currentWishList || !this.categories) return [];
     const currentWishListId = this.currentWishList.sys?.id;
-    return this.categories.filter(category =>
-      category.fields.wishList?.some(wishListItem => wishListItem.sys.id === currentWishListId)
-    );
+
+    // Only show categories that are linked to this wishlist AND have items
+    return this.categories.filter(category => {
+      const isLinkedToWishList = category.fields.wishList?.some(
+        wishListItem => wishListItem.sys.id === currentWishListId
+      );
+
+      if (!isLinkedToWishList) return false;
+
+      // Check if this category has any items in this wishlist
+      const categoryId = category.sys?.id;
+      const hasItems = this.items.some(item =>
+        item.fields.category?.some(cat => cat.sys.id === categoryId) &&
+        item.fields.wishList.some(wl => wl.sys.id === currentWishListId) &&
+        !item.fields.isStale
+      );
+
+      return hasItems;
+    });
   }
 
   render() {
