@@ -70,8 +70,6 @@ export class Item extends LitElement {
                   alt=${fields.title}
                   src=${fields.imageUrl || "/present.jpg"}
                   class="image"
-                  width="150"
-                  height="150"
                 />
               </a>
             `
@@ -80,8 +78,6 @@ export class Item extends LitElement {
                 alt=${fields.title}
                 src=${fields.imageUrl || "/present.jpg"}
                 class="image"
-                width="150"
-                height="150"
               />
             `}
       </div>
