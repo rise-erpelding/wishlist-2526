@@ -1,16 +1,10 @@
 import { createClient as createDeliveryClient } from 'contentful';
-import { createClient as createManagementClient } from 'contentful-management';
 
 // Delivery client for fetching content (read-only)
 const client = createDeliveryClient({
   space: import.meta.env.VITE_CONTENTFUL_SPACE_ID,
   accessToken: import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN,
   environment: import.meta.env.VITE_CONTENTFUL_ENVIRONMENT || 'master',
-});
-
-// Management client for updating content (write operations)
-const managementClient = createManagementClient({
-  accessToken: import.meta.env.VITE_CONTENTFUL_MANAGEMENT_TOKEN,
 });
 
 /**
@@ -33,27 +27,28 @@ export async function fetchEntries(content_type, options = {}) {
 }
 
 /**
- * Update an entry in Contentful
+ * Update an entry in Contentful via Netlify function
  * @param {string} entryId - The ID of the entry to update
  * @param {object} updatedFields - Object with field names and values to update
  * @returns {Promise<object>} The updated and published entry
  */
 export async function patchEntry(entryId, updatedFields) {
   try {
-    const space = await managementClient.getSpace(import.meta.env.VITE_CONTENTFUL_SPACE_ID);
-    const environment = await space.getEnvironment(import.meta.env.VITE_CONTENTFUL_ENVIRONMENT || 'master');
-
-    const entry = await environment.getEntry(entryId);
-
-    // Update fields (assuming 'en-US' locale)
-    Object.keys(updatedFields).forEach(field => {
-      entry.fields[field] = { 'en-US': updatedFields[field] };
+    const response = await fetch('/.netlify/functions/claim-item', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ entryId, updatedFields }),
     });
 
-    const updatedEntry = await entry.update();
-    const publishedEntry = await updatedEntry.publish();
+    const data = await response.json();
 
-    return publishedEntry;
+    if (!response.ok) {
+      throw new Error(data.error || 'Failed to update entry');
+    }
+
+    return data.entry;
   } catch (error) {
     console.error('Error updating entry:', error);
     throw error;
