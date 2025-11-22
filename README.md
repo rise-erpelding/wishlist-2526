@@ -108,6 +108,8 @@ wishlist-2526/
 ├── netlify/
 │   └── functions/          # Netlify serverless functions
 │       └── claim-item.js   # Handles claiming items (secure)
+├── tools/
+│   └── add-item.js        # CLI tool to add items to Contentful
 ├── public/                 # Static assets
 └── index.html             # Main HTML entry point
 ```
@@ -123,6 +125,16 @@ The app uses Lit web components with Shadow DOM:
           └─ <wish-claim-item>  # Claim button/form
               └─ <wish-claim-item-form>  # Form for claiming
 ```
+
+## Adding Items
+
+Use the CLI tool to add items interactively:
+
+```bash
+npm run add-item
+```
+
+The tool will prompt for URL, title, description, wishlist, and category. It automatically extracts product images from the URL when possible.
 
 ## Contentful Content Model
 
