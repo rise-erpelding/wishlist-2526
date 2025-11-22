@@ -5,7 +5,7 @@ A web-based wishlist application that displays and manages wishlists from Conten
 ## Features
 
 - Display multiple wishlists with items organized by category
-- Claim/unclaim items with optional email notification
+- Claim/unclaim items by optionally providing an email address
 - Filter to hide claimed items
 - Collapsible wishlists and categories
 - Item details including title, description, images, and links
@@ -16,6 +16,7 @@ A web-based wishlist application that displays and manages wishlists from Conten
 - **Lit** (v3.3.1) - Lightweight web component library
 - **Contentful** - Headless CMS for content management
 - **Vite** (v7.1.6) - Fast build tool and dev server
+- **Netlify Functions** - Serverless functions for secure API calls
 - **Node.js** v24+ - Runtime environment
 
 ## Prerequisites
@@ -23,6 +24,7 @@ A web-based wishlist application that displays and manages wishlists from Conten
 - Node.js >= 24 < 25 (recommended: v24.11.0)
 - npm package manager
 - Contentful account with API credentials
+- Netlify CLI (for local development with functions)
 
 ## Getting Started
 
@@ -47,20 +49,32 @@ cp .env.example .env
 Then edit `.env` with your Contentful credentials:
 
 ```env
+# Client-side (bundled into JS)
 VITE_CONTENTFUL_SPACE_ID=your_space_id_here
 VITE_CONTENTFUL_ACCESS_TOKEN=your_delivery_token_here
-VITE_CONTENTFUL_MANAGEMENT_TOKEN=your_management_token_here
 VITE_CONTENTFUL_ENVIRONMENT=master
+
+# Server-side (Netlify Functions only - never exposed to browser)
+CONTENTFUL_SPACE_ID=your_space_id_here
+CONTENTFUL_MANAGEMENT_TOKEN=your_management_token_here
+CONTENTFUL_ENVIRONMENT=master
 ```
 
 **Where to find these:**
 1. Go to [Contentful](https://app.contentful.com)
 2. Navigate to Settings → API keys
-3. Copy the Space ID, Content Delivery API token, and Content Management API token
+3. Copy the Space ID and Content Delivery API token (for client-side)
+4. Create a Content Management API token (for server-side functions)
 
 ### 3. Run the Application
 
-**Development:**
+**Development (with Netlify Functions):**
+```bash
+netlify dev
+```
+Opens at `http://localhost:8888`
+
+**Development (Vite only, no functions):**
 ```bash
 npm run dev
 ```
@@ -91,6 +105,9 @@ wishlist-2526/
 │   │   └── claim-item-form/ # Claim form component
 │   ├── icons/              # SVG icon components
 │   └── styles/             # Global CSS
+├── netlify/
+│   └── functions/          # Netlify serverless functions
+│       └── claim-item.js   # Handles claiming items (secure)
 ├── public/                 # Static assets
 └── index.html             # Main HTML entry point
 ```
